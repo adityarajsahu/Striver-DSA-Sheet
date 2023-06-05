@@ -1,45 +1,30 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
-class MyStack {
-private:
-    queue<int> q;
-    queue<int> temp;
-    int topElem;
-public:
-    MyStack() {
-        topElem = -1;
-    }
-    
-    void push(int x) {
-        q.push(x);
-        topElem = x;
-    }
-    
-    int pop() {
-        while(q.size() > 1) {
-            int front = q.front();
-            q.pop();
-            temp.push(front);
-        }
-        
-        int ans = q.front();
-        q.pop();
-        while(!temp.empty()) {
-            if(temp.size() == 1) {
-                topElem = temp.front();
+class Stack {
+    private:
+        queue <int> q;
+
+    public:
+        void push(int x) {
+            int s = q.size();
+            q.push(x);
+            for (int i = 0; i < s; i++) {
+
+                q.push(q.front());
+                q.pop();
             }
-            q.push(temp.front());
-            temp.pop();
         }
-        return ans;
-    }
-    
-    int top() {
-        return topElem;
-    }
-    
-    bool empty() {
-        return q.empty();
-    }
+
+        void pop() {
+            q.pop();
+        }
+
+        int top() {
+            return q.front();
+        }
+
+        int size() {
+            return q.size();
+        }
 };
