@@ -6,11 +6,11 @@ int prevSmaller(vector<int> &A) {
     stack<int> s;
 
     for(int i = A.size() - 1; i >= 0; i--) {
-        while(!s.empty() && s.top() > num) {
-            m[s.top()] = num;
+        while(!s.empty() && s.top() > A[i]) {
+            m[s.top()] = A[i];
             s.pop();
         }
-        s.push(num);
+        s.push(A[i]);
     }
 
     vector<int> ans;
