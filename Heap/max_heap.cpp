@@ -98,19 +98,3 @@ public:
         }
     }
 };
-
-void MaxHeap::MaxHeapify(int i)
-{
-    int l = lChild(i);
-    int r = rChild(i);
-    int largest = i;
-    if (l < heapSize && arr[l] > arr[i])
-        largest = l;
-    if (r < heapSize && arr[r] > arr[largest])
-        largest = r;
-    if (largest != i)
-    {
-        swap(arr[i], arr[largest]);
-        MaxHeapify(largest);
-    }
-}
