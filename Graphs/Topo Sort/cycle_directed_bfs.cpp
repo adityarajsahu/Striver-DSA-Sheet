@@ -24,6 +24,7 @@ bool isCyclic(int V, vector<int> adj[]) {
         for(auto n : adj[node]) {
             indegree[n]--;
             if(indegree[n] == 0) {
+                q.push(n);
                 count++;
             }
         }
